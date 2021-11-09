@@ -2,7 +2,11 @@
 
 Zadatak
 
-![Zadatak](https://user-images.githubusercontent.com/59344048/140909701-414248be-eb46-4a86-b8de-08a9ae3881b7.png)
+![Zadatak](https://user-images.githubusercontent.com/59344048/140910628-9b552eff-4e7e-438a-97d6-6e5eea6d83a6.png)
 
-https://user-images.githubusercontent.com/59344048/140910310-b798f081-1652-4fc2-a6e5-608878871868.mp4
+Rezultat
+
+https://user-images.githubusercontent.com/59344048/140910786-15a10020-b426-4bba-97c7-4944e908bf7f.mp4
+
+
 
