@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: grey;
+  height: 100vh;
+}
+
+.tlight__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.tlight {
+  height: 7vw;
+  width: 7vw;
+  border: black solid 6px;
+  border-radius: 50%;
+  margin: 0 1vw;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
