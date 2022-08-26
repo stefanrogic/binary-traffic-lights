@@ -532,8 +532,83 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"4BBVY":[function(require,module,exports) {
+var _model = require("./model");
+const controllTraficLight = async function() {
+    try {
+        // (0) GENERATE NEW RANDOM DECIMAL NUMBER
+        await _model.generateNumber();
+        // (1) CONVERT DECIMAL NUMBER TO BINARY
+        _model.convertNumber();
+    } catch (err) {
+        console.log(err);
+    }
+};
+const init = ()=>{
+    controllTraficLight();
+};
+init();
+
+},{"./model":"fDCwj"}],"fDCwj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "State", ()=>State);
+parcelHelpers.export(exports, "generateNumber", ()=>generateNumber);
+parcelHelpers.export(exports, "convertNumber", ()=>convertNumber);
+var _helpers = require("./helpers");
+var _config = require("./config");
+const State = {
+    decimalNum: 0,
+    binaryNum: "00000000"
+};
+const generateNumber = async function() {
+    try {
+        const data = await (0, _helpers.getJSON)((0, _config.API_URL));
+        State.decimalNum = data;
+    } catch (err) {
+        throw err;
+    }
+};
+const convertNumber = function() {
+    const binaryShort = Number(State.decimalNum).toString(2);
+    const length = (0, _config.BINARY_LENGTH) - binaryShort.length;
+    State.binaryNum = `${"0".repeat(length)}${binaryShort}`;
+};
+
+},{"./helpers":"F3cvI","./config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"F3cvI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+var _config = require("./config");
+const timeout = function(s) {
+    return new Promise(function(_, reject) {
+        setTimeout(function() {
+            reject(new Error(`Request took too long! Timeout after ${s} second`));
+        }, s * 1000);
+    });
+};
+const getJSON = async function(url) {
+    try {
+        const res = await Promise.race([
+            fetch(url),
+            timeout((0, _config.TIMEOUT_SEC))
+        ]);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        return data;
+    } catch (err) {
+        throw err;
+    }
+};
+
+},{"./config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2S9PZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "API_URL", ()=>API_URL);
+parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
+parcelHelpers.export(exports, "BINARY_LENGTH", ()=>BINARY_LENGTH);
+const API_URL = `https://www.random.org/integers/?num=1&min=0&max=255&col=1&base=10&format=plain&rnd=new`;
+const TIMEOUT_SEC = 10;
+const BINARY_LENGTH = 8;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
