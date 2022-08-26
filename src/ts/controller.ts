@@ -4,10 +4,14 @@ import traficLightView from './views/traficLightView';
 const controllTraficLight = async function () {
   try {
     // (0) GENERATE NEW RANDOM DECIMAL NUMBER
+    traficLightView.yellow();
     await model.generateNumber();
 
     // (1) CONVERT DECIMAL NUMBER TO BINARY
     model.convertNumber();
+
+    // (2) CHANGE LIGHTS ACCORDING TO NUMBER
+    traficLightView.changeLights(model.State.binaryNum);
   } catch (err) {
     console.log(err);
   }

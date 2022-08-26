@@ -532,13 +532,19 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"4BBVY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _model = require("./model");
+var _traficLightView = require("./views/traficLightView");
+var _traficLightViewDefault = parcelHelpers.interopDefault(_traficLightView);
 const controllTraficLight = async function() {
     try {
         // (0) GENERATE NEW RANDOM DECIMAL NUMBER
+        (0, _traficLightViewDefault.default).yellow();
         await _model.generateNumber();
         // (1) CONVERT DECIMAL NUMBER TO BINARY
         _model.convertNumber();
+        // (2) CHANGE LIGHTS ACCORDING TO NUMBER
+        (0, _traficLightViewDefault.default).changeLights(_model.State.binaryNum);
     } catch (err) {
         console.log(err);
     }
@@ -548,7 +554,7 @@ const init = ()=>{
 };
 init();
 
-},{"./model":"fDCwj"}],"fDCwj":[function(require,module,exports) {
+},{"./model":"fDCwj","./views/traficLightView":"1SRyJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fDCwj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "State", ()=>State);
@@ -640,6 +646,30 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
+},{}],"1SRyJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class TraficLight {
+    elements = document.querySelectorAll(".tlight");
+    errorMessage = "We can't get a number at the momment.";
+    red(element) {
+        element.classList.remove("yellow", "green");
+        element.classList.add("red");
+    }
+    yellow() {
+        this.elements.forEach((el)=>el.classList.add("yellow"));
+    }
+    green(element) {
+        element.classList.remove("yellow", "red");
+        element.classList.add("green");
+    }
+    changeLights(number) {
+        const numArr = number.split("");
+        this.elements.forEach((el, i)=>numArr[i] === "0" ? this.red(el) : this.green(el));
+    }
+}
+exports.default = new TraficLight();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
 
 //# sourceMappingURL=index.4e23d365.js.map
