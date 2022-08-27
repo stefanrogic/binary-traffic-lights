@@ -1,7 +1,7 @@
 {
-  "name": "semafor",
+  "name": "trafic-light",
   "version": "1.0.0",
-  "description": "Svake sekunde JSON poziv povlaci nasumican dekadni broj, zatim taj broj treba pretvoriti u binarni. Svaka binarna cifra ima svoj semafor, nula pali crveno svetlo dok jedinica pali zeleno. Zuta se pali dok se generise novi broj.",
+  "description": "Every second AJAX request gets a new random decimal number. Decimal is converted to binary number. Red light is turned if it is 0 and green if 1. While getting a new numbers lights turn yellow.",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
