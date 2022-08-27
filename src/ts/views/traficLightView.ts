@@ -3,21 +3,24 @@ import { COLORS } from '../config';
 class TraficLight {
   private elements: any = document.querySelectorAll('.tlight');
 
-  // Repeats any function
+  // REPEATS ANY FUNCTION
   public repeat(f: any, s: number) {
     return setInterval(f, s * 1000);
   }
 
+  // TURNS ALL TRAFIC LIGHTS YELOW
   public yellow() {
     this.elements.forEach((el: any) => el.classList.add('yellow'));
   }
 
+  // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
   private clear() {
     this.elements.forEach((el: any) => {
       el.classList.remove('yellow', 'red', 'green');
     });
   }
 
+  // RENDERS COLOR ACCORDING TO A NUMBER
   public renderColors(binary: string) {
     this.clear();
     const numArr: string[] = binary.split('');

@@ -1,5 +1,7 @@
+// IMPORTS
 import { TIMEOUT_SEC } from './config';
 
+// INTERFACES
 interface timeoutInterface {
   (s: number);
 }
@@ -8,6 +10,7 @@ interface getJSONInterface {
   (url: string);
 }
 
+// TIMES OUT JSON REQUEST AFTER TIMEOUT_SEC (config.ts)
 const timeout: timeoutInterface = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -16,6 +19,7 @@ const timeout: timeoutInterface = function (s) {
   });
 };
 
+// SENDS JSON REQUEST AND COLLECTS RESPONSE
 export const getJSON: getJSONInterface = async function (url) {
   try {
     const res: any = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);

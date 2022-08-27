@@ -1,3 +1,4 @@
+// IMPORTS
 import * as model from './model';
 import traficLightView from './views/traficLightView';
 
@@ -17,6 +18,7 @@ const controllTraficLight = async function () {
   }
 };
 
+// ON START
 const init = () => {
   traficLightView.repeat(controllTraficLight(), 1);
 };
