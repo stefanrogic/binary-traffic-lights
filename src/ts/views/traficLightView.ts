@@ -18,10 +18,6 @@ class TraficLight {
     this.clear();
     const numArr: string[] = binary.split('');
     this.elements.forEach((el: any, elIndex: number) =>
-      // numArr[elIndex].includes('0')
-      //   ? el.classList.add(COLORS.zero)
-      //   : el.classList.add(COLORS.one)
-
       numArr.find((_, numIndex: number) => numIndex === elIndex)?.includes('0')
         ? el.classList.add(COLORS.zero)
         : el.classList.add(COLORS.one)

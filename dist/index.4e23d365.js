@@ -670,10 +670,7 @@ class TraficLight {
     renderColors(binary) {
         this.clear();
         const numArr = binary.split("");
-        this.elements.forEach((el, elIndex)=>// numArr[elIndex].includes('0')
-            //   ? el.classList.add(COLORS.zero)
-            //   : el.classList.add(COLORS.one)
-            numArr.find((_, numIndex)=>numIndex === elIndex)?.includes("0") ? el.classList.add((0, _config.COLORS).zero) : el.classList.add((0, _config.COLORS).one));
+        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes("0") ? el.classList.add((0, _config.COLORS).zero) : el.classList.add((0, _config.COLORS).one));
     }
 }
 exports.default = new TraficLight();
