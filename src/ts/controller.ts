@@ -11,13 +11,13 @@ const controllTraficLight = async function () {
     model.convertNumber();
 
     // (2) CHANGE LIGHTS ACCORDING TO NUMBER
-    traficLightView.changeLights(model.State.binaryNum);
+    traficLightView.renderColors(model.State.binaryNum);
   } catch (err) {
     console.log(err);
   }
 };
 
 const init = () => {
-  controllTraficLight();
+  setInterval(() => controllTraficLight(), 1000);
 };
 init();

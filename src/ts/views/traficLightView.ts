@@ -1,26 +1,27 @@
-class TraficLight {
-  private elements = document.querySelectorAll('.tlight');
-  private errorMessage = "We can't get a number at the momment.";
+import { COLORS } from '../config';
 
-  public red(element) {
-    element.classList.remove('yellow', 'green');
-    element.classList.add('red');
-  }
+class TraficLight {
+  private elements: any = document.querySelectorAll('.tlight');
+  private errorMessage: string = "We can't get a number at the momment.";
 
   public yellow() {
     this.elements.forEach(el => el.classList.add('yellow'));
   }
 
-  public green(element) {
-    element.classList.remove('yellow', 'red');
-    element.classList.add('green');
+  private clear() {
+    this.elements.forEach(el => {
+      el.classList.remove('yellow', 'red', 'green');
+    });
   }
 
-  public changeLights(number) {
-    const numArr = number.split('');
-    this.elements.forEach((el, i) =>
-      numArr[i] === '0' ? this.red(el) : this.green(el)
-    );
+  public renderColors(binary: string) {
+    this.clear();
+    const numArr = binary.split('');
+    console.log(numArr);
+    this.elements.forEach((el, i) => {
+      if (numArr[i] === '0') el.classList.add(COLORS.zero);
+      if (numArr[i] === '1') el.classList.add(COLORS.one);
+    });
   }
 }
 

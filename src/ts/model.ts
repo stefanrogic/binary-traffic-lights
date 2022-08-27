@@ -1,6 +1,5 @@
 import { getJSON } from './helpers';
-import { API_URL } from './config';
-import { BINARY_LENGTH } from './config';
+import { API_URL, BINARY_LENGTH, COLORS } from './config';
 
 export const State = {
   decimalNum: 0,

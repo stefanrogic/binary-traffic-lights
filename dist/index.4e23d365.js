@@ -544,13 +544,13 @@ const controllTraficLight = async function() {
         // (1) CONVERT DECIMAL NUMBER TO BINARY
         _model.convertNumber();
         // (2) CHANGE LIGHTS ACCORDING TO NUMBER
-        (0, _traficLightViewDefault.default).changeLights(_model.State.binaryNum);
+        (0, _traficLightViewDefault.default).renderColors(_model.State.binaryNum);
     } catch (err) {
         console.log(err);
     }
 };
 const init = ()=>{
-    controllTraficLight();
+    setInterval(()=>controllTraficLight(), 1000);
 };
 init();
 
@@ -612,9 +612,14 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
 parcelHelpers.export(exports, "BINARY_LENGTH", ()=>BINARY_LENGTH);
+parcelHelpers.export(exports, "COLORS", ()=>COLORS);
 const API_URL = `https://www.random.org/integers/?num=1&min=0&max=255&col=1&base=10&format=plain&rnd=new`;
 const TIMEOUT_SEC = 10;
 const BINARY_LENGTH = 8;
+const COLORS = {
+    one: "green",
+    zero: "red"
+};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -649,27 +654,30 @@ exports.export = function(dest, destName, get) {
 },{}],"1SRyJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _config = require("../config");
 class TraficLight {
     elements = document.querySelectorAll(".tlight");
     errorMessage = "We can't get a number at the momment.";
-    red(element) {
-        element.classList.remove("yellow", "green");
-        element.classList.add("red");
-    }
     yellow() {
         this.elements.forEach((el)=>el.classList.add("yellow"));
     }
-    green(element) {
-        element.classList.remove("yellow", "red");
-        element.classList.add("green");
+    clear() {
+        this.elements.forEach((el)=>{
+            el.classList.remove("yellow", "red", "green");
+        });
     }
-    changeLights(number) {
-        const numArr = number.split("");
-        this.elements.forEach((el, i)=>numArr[i] === "0" ? this.red(el) : this.green(el));
+    renderColors(binary) {
+        this.clear();
+        const numArr = binary.split("");
+        console.log(numArr);
+        this.elements.forEach((el, i)=>{
+            if (numArr[i] === "0") el.classList.add((0, _config.COLORS).zero);
+            if (numArr[i] === "1") el.classList.add((0, _config.COLORS).one);
+        });
     }
 }
 exports.default = new TraficLight();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../config":"2S9PZ"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
 
 //# sourceMappingURL=index.4e23d365.js.map
