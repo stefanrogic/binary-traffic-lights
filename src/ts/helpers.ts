@@ -19,7 +19,9 @@ const timeout: timeoutInterface = function (s) {
   });
 };
 
-// SENDS JSON REQUEST AND COLLECTS RESPONSE
+// SENDS JSON REQUEST
+// RACES WITH TIMEOUT FUNCTION
+// RETURNS DATA (model.ts)
 export const getJSON: getJSONInterface = async function (url) {
   try {
     const res: any = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
