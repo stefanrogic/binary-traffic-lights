@@ -3,6 +3,7 @@ import { COLORS } from '../config';
 class TraficLight {
   private elements: any = document.querySelectorAll('.tlight');
 
+  // Repeats any function
   public repeat(f: any, s: number) {
     return setInterval(f, s * 1000);
   }
