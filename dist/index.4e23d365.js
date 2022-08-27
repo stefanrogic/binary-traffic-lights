@@ -533,6 +533,7 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"4BBVY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+// IMPORTS
 var _model = require("./model");
 var _traficLightView = require("./views/traficLightView");
 var _traficLightViewDefault = parcelHelpers.interopDefault(_traficLightView);
@@ -549,8 +550,9 @@ const controllTraficLight = async function() {
         console.log(err);
     }
 };
+// ON START
 const init = ()=>{
-    (0, _traficLightViewDefault.default).repeat(controllTraficLight(), 1);
+    (0, _traficLightViewDefault.default).repeat(controllTraficLight, 1);
 };
 init();
 
@@ -560,6 +562,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "State", ()=>State);
 parcelHelpers.export(exports, "generateNumber", ()=>generateNumber);
 parcelHelpers.export(exports, "convertNumber", ()=>convertNumber);
+// IMPORT
 var _helpers = require("./helpers");
 var _config = require("./config");
 const State = {
@@ -585,7 +588,9 @@ const convertNumber = function() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+// IMPORTS
 var _config = require("./config");
+// TIMES OUT JSON REQUEST AFTER TIMEOUT_SEC (config.ts)
 const timeout = function(s) {
     return new Promise(function(_, reject) {
         setTimeout(function() {
@@ -658,17 +663,21 @@ parcelHelpers.defineInteropFlag(exports);
 var _config = require("../config");
 class TraficLight {
     elements = document.querySelectorAll(".tlight");
+    // REPEATS ANY FUNCTION
     repeat(f, s) {
         return setInterval(f, s * 1000);
     }
+    // TURNS ALL TRAFIC LIGHTS YELOW
     yellow() {
         this.elements.forEach((el)=>el.classList.add("yellow"));
     }
+    // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
     clear() {
         this.elements.forEach((el)=>{
             el.classList.remove("yellow", "red", "green");
         });
     }
+    // RENDERS COLOR ACCORDING TO A NUMBER
     renderColors(binary) {
         this.clear();
         const numArr = binary.split("");
@@ -677,6 +686,6 @@ class TraficLight {
 }
 exports.default = new TraficLight();
 
-},{"../config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
+},{"../config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequiref13d")
 
 //# sourceMappingURL=index.4e23d365.js.map
