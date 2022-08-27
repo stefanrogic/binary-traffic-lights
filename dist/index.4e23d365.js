@@ -617,10 +617,10 @@ parcelHelpers.export(exports, "COLORS", ()=>COLORS);
 const API_URL = `https://www.random.org/integers/?num=1&min=0&max=255&col=1&base=10&format=plain&rnd=new`;
 const TIMEOUT_SEC = 10;
 const BINARY_LENGTH = 8;
-const COLORS = {
-    one: "green",
-    zero: "red"
-};
+const COLORS = [
+    "red",
+    "green"
+];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -658,7 +658,6 @@ parcelHelpers.defineInteropFlag(exports);
 var _config = require("../config");
 class TraficLight {
     elements = document.querySelectorAll(".tlight");
-    errorMessage = "We can't get a number at the momment.";
     repeat(f, s) {
         return setInterval(f, s * 1000);
     }
@@ -673,7 +672,7 @@ class TraficLight {
     renderColors(binary) {
         this.clear();
         const numArr = binary.split("");
-        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes("0") ? el.classList.add((0, _config.COLORS).zero) : el.classList.add((0, _config.COLORS).one));
+        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes(String((0, _config.COLORS).indexOf("red"))) ? el.classList.add((0, _config.COLORS)[0]) : el.classList.add((0, _config.COLORS)[1]));
     }
 }
 exports.default = new TraficLight();
