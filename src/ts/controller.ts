@@ -18,6 +18,6 @@ const controllTraficLight = async function () {
 };
 
 const init = () => {
-  setInterval(() => controllTraficLight(), 1000);
+  traficLightView.repeat(controllTraficLight(), 1);
 };
 init();

@@ -4,6 +4,10 @@ class TraficLight {
   private elements: any = document.querySelectorAll('.tlight');
   private errorMessage: string = "We can't get a number at the momment.";
 
+  public repeat(f, s) {
+    return setInterval(f, s * 1000);
+  }
+
   public yellow() {
     this.elements.forEach(el => el.classList.add('yellow'));
   }

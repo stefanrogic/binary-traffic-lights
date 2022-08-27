@@ -550,7 +550,7 @@ const controllTraficLight = async function() {
     }
 };
 const init = ()=>{
-    setInterval(()=>controllTraficLight(), 1000);
+    (0, _traficLightViewDefault.default).repeat(controllTraficLight(), 1);
 };
 init();
 
@@ -659,6 +659,9 @@ var _config = require("../config");
 class TraficLight {
     elements = document.querySelectorAll(".tlight");
     errorMessage = "We can't get a number at the momment.";
+    repeat(f, s) {
+        return setInterval(f, s * 1000);
+    }
     yellow() {
         this.elements.forEach((el)=>el.classList.add("yellow"));
     }
