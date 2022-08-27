@@ -1,7 +1,7 @@
 {
   "name": "trafic-light",
   "version": "1.0.0",
-  "description": "Every second AJAX request gets a new random decimal number. Decimal is converted to binary number. Red light is turned if it is 0 and green if 1. While getting a new numbers lights turn yellow.",
+  "description": "Every second AJAX request gets a new random decimal number. Decimal number is then converted to a binary number. Red light is turned on 0 and green on 1. While getting new numbers lights turn yellow.",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
