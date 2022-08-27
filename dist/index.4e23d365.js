@@ -675,6 +675,6 @@ class TraficLight {
 }
 exports.default = new TraficLight();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../config":"2S9PZ"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
+},{"../config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["UnBdc","4BBVY"], "4BBVY", "parcelRequire8ec2")
 
 //# sourceMappingURL=index.4e23d365.js.map
