@@ -16,12 +16,16 @@ class TraficLight {
 
   public renderColors(binary: string) {
     this.clear();
-    const numArr = binary.split('');
-    console.log(numArr);
-    this.elements.forEach((el, i) => {
-      if (numArr[i] === '0') el.classList.add(COLORS.zero);
-      if (numArr[i] === '1') el.classList.add(COLORS.one);
-    });
+    const numArr: string[] = binary.split('');
+    this.elements.forEach((el: any, elIndex: number) =>
+      // numArr[elIndex].includes('0')
+      //   ? el.classList.add(COLORS.zero)
+      //   : el.classList.add(COLORS.one)
+
+      numArr.find((_, numIndex: number) => numIndex === elIndex)?.includes('0')
+        ? el.classList.add(COLORS.zero)
+        : el.classList.add(COLORS.one)
+    );
   }
 }
 

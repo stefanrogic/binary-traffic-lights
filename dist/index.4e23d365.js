@@ -578,6 +578,7 @@ const convertNumber = function() {
     const binaryShort = Number(State.decimalNum).toString(2);
     const length = (0, _config.BINARY_LENGTH) - binaryShort.length;
     State.binaryNum = `${"0".repeat(length)}${binaryShort}`;
+    window.location.hash = `${State.binaryNum}`;
 };
 
 },{"./helpers":"F3cvI","./config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"F3cvI":[function(require,module,exports) {
@@ -599,7 +600,7 @@ const getJSON = async function(url) {
             timeout((0, _config.TIMEOUT_SEC))
         ]);
         const data = await res.json();
-        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        if (!res.ok) throw new Error(`${res.message} (${res.status})`);
         return data;
     } catch (err) {
         throw err;
@@ -669,11 +670,10 @@ class TraficLight {
     renderColors(binary) {
         this.clear();
         const numArr = binary.split("");
-        console.log(numArr);
-        this.elements.forEach((el, i)=>{
-            if (numArr[i] === "0") el.classList.add((0, _config.COLORS).zero);
-            if (numArr[i] === "1") el.classList.add((0, _config.COLORS).one);
-        });
+        this.elements.forEach((el, elIndex)=>// numArr[elIndex].includes('0')
+            //   ? el.classList.add(COLORS.zero)
+            //   : el.classList.add(COLORS.one)
+            numArr.find((_, numIndex)=>numIndex === elIndex)?.includes("0") ? el.classList.add((0, _config.COLORS).zero) : el.classList.add((0, _config.COLORS).one));
     }
 }
 exports.default = new TraficLight();
