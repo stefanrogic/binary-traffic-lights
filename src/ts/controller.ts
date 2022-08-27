@@ -20,6 +20,6 @@ const controllTraficLight = async function () {
 
 // ON START
 const init = () => {
-  traficLightView.repeat(controllTraficLight(), 1);
+  traficLightView.repeat(controllTraficLight, 1);
 };
 init();
