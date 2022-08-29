@@ -624,7 +624,8 @@ const TIMEOUT_SEC = 10;
 const BINARY_LENGTH = 8;
 const COLORS = [
     "red",
-    "green"
+    "green",
+    "yellow"
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
@@ -669,19 +670,19 @@ class TraficLight {
     }
     // TURNS ALL TRAFIC LIGHTS YELOW
     yellow() {
-        this.elements.forEach((el)=>el.classList.add("yellow"));
+        this.elements.forEach((el)=>el.classList.add((0, _config.COLORS)[2]));
     }
     // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
     clear() {
         this.elements.forEach((el)=>{
-            el.classList.remove("yellow", "red", "green");
+            el.classList.remove((0, _config.COLORS)[0], (0, _config.COLORS)[1], (0, _config.COLORS)[2]);
         });
     }
     // RENDERS COLOR ACCORDING TO A NUMBER
     renderColors(binary) {
         this.clear();
         const numArr = binary.split("");
-        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes(String((0, _config.COLORS).indexOf("red"))) ? el.classList.add((0, _config.COLORS)[0]) : el.classList.add((0, _config.COLORS)[1]));
+        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes(String((0, _config.COLORS).indexOf((0, _config.COLORS)[0]))) ? el.classList.add((0, _config.COLORS)[0]) : el.classList.add((0, _config.COLORS)[1]));
     }
 }
 exports.default = new TraficLight();

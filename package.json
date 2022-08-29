@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rasgrin/semafor.git"
+    "url": "git+https://github.com/Rasgrin/binary-traffic-lights.git"
   },
   "author": "Stefan Rogic",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rasgrin/semafor/issues"
+    "url": "https://github.com/Rasgrin/binary-traffic-lights/issues"
   },
-  "homepage": "https://github.com/Rasgrin/semafor#readme",
+  "homepage": "https://github.com/Rasgrin/binary-traffic-lights#readme",
   "dependencies": {
     "typescript": "^4.8.2"
   },

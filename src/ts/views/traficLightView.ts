@@ -10,13 +10,13 @@ class TraficLight {
 
   // TURNS ALL TRAFIC LIGHTS YELOW
   public yellow() {
-    this.elements.forEach((el: any) => el.classList.add('yellow'));
+    this.elements.forEach((el: any) => el.classList.add(COLORS[2]));
   }
 
   // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
   private clear() {
     this.elements.forEach((el: any) => {
-      el.classList.remove('yellow', 'red', 'green');
+      el.classList.remove(COLORS[0], COLORS[1], COLORS[2]);
     });
   }
 
@@ -27,7 +27,7 @@ class TraficLight {
     this.elements.forEach((el: any, elIndex: number) =>
       numArr
         .find((_, numIndex: number) => numIndex === elIndex)
-        ?.includes(String(COLORS.indexOf('red')))
+        ?.includes(String(COLORS.indexOf(COLORS[0])))
         ? el.classList.add(COLORS[0])
         : el.classList.add(COLORS[1])
     );
