@@ -545,7 +545,7 @@ const controllTraficLight = async function() {
         // (1) CONVERT DECIMAL NUMBER TO BINARY
         _model.convertNumber();
         // (2) CHANGE LIGHTS ACCORDING TO NUMBER
-        (0, _traficLightViewDefault.default).renderColors(_model.State.binaryNum);
+        (0, _traficLightViewDefault.default).renderColor(_model.State.binaryNum);
     } catch (err) {
         console.log(err);
     }
@@ -581,7 +581,7 @@ const convertNumber = function() {
     const binaryShort = Number(State.decimalNum).toString(2);
     const length = (0, _config.BINARY_LENGTH) - binaryShort.length;
     State.binaryNum = `${"0".repeat(length)}${binaryShort}`;
-    window.location.hash = `${State.binaryNum}`;
+    window.location.hash = `${State.binaryNum}=${State.decimalNum}`;
 };
 
 },{"./helpers":"F3cvI","./config":"2S9PZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"F3cvI":[function(require,module,exports) {
@@ -664,25 +664,34 @@ parcelHelpers.defineInteropFlag(exports);
 var _config = require("../config");
 class TraficLight {
     elements = document.querySelectorAll(".tlight");
-    // REPEATS ANY FUNCTION
+    // REPEATS A FUNCTION(F) EVERY SECOND/S(S)
     repeat(f, s) {
         return setInterval(f, s * 1000);
     }
     // TURNS ALL TRAFIC LIGHTS YELOW
     yellow() {
-        this.elements.forEach((el)=>el.classList.add((0, _config.COLORS)[2]));
+        this.clear();
+        this.elements.forEach((el)=>el.classList.add((0, _config.COLORS)[2]) // 2 IS AN INDEX OF YELLOW IN COLORS ARRAY (config.ts)
+        );
     }
-    // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
+    // CLEARS ALL CLASSES AND NUMBERS FROM TRAFIC LIGHTS
     clear() {
         this.elements.forEach((el)=>{
-            el.classList.remove((0, _config.COLORS)[0], (0, _config.COLORS)[1], (0, _config.COLORS)[2]);
+            (0, _config.COLORS).map((color)=>{
+                el.classList.remove(color);
+                el.innerHTML = "";
+            });
         });
     }
-    // RENDERS COLOR ACCORDING TO A NUMBER
-    renderColors(binary) {
-        this.clear();
-        const numArr = binary.split("");
-        this.elements.forEach((el, elIndex)=>numArr.find((_, numIndex)=>numIndex === elIndex)?.includes(String((0, _config.COLORS).indexOf((0, _config.COLORS)[0]))) ? el.classList.add((0, _config.COLORS)[0]) : el.classList.add((0, _config.COLORS)[1]));
+    // RENDERS NUMBER INSIDE A TRAFIC LIGHT
+    renderNumber(el, num) {
+        return el.innerHTML = `<p class="num">${num}</p>`;
+    }
+    // RENDERS COLOR DEPENDING TO A NUMBER
+    renderColor(binary) {
+        const numArr = binary.split("").map((num)=>Number(num));
+        this.elements.forEach((el, elIndex)=>numArr.find((num, numIndex)=>numIndex === elIndex && this.renderNumber(el, num) && el.classList.add((0, _config.COLORS)[num]) // 0 FOR RED AND 1 FOR GREEN - INDEXES IN COLORS ARRAY (config.ts)
+            ));
     }
 }
 exports.default = new TraficLight();

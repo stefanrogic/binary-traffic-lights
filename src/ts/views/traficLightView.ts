@@ -1,35 +1,47 @@
 import { COLORS } from '../config';
 
 class TraficLight {
-  private elements: any = document.querySelectorAll('.tlight');
+  private elements: NodeListOf<HTMLDivElement> =
+    document.querySelectorAll('.tlight');
 
-  // REPEATS ANY FUNCTION
+  // REPEATS A FUNCTION(F) EVERY SECOND/S(S)
   public repeat(f: any, s: number) {
     return setInterval(f, s * 1000);
   }
 
   // TURNS ALL TRAFIC LIGHTS YELOW
   public yellow() {
-    this.elements.forEach((el: any) => el.classList.add(COLORS[2]));
+    this.clear();
+    this.elements.forEach(
+      (el: HTMLDivElement) => el.classList.add(COLORS[2]) // 2 IS AN INDEX OF YELLOW IN COLORS ARRAY (config.ts)
+    );
   }
 
-  // CLEARS ALL CLASSES FROM TRAFIC LIGHTS
+  // CLEARS ALL CLASSES AND NUMBERS FROM TRAFIC LIGHTS
   private clear() {
-    this.elements.forEach((el: any) => {
-      el.classList.remove(COLORS[0], COLORS[1], COLORS[2]);
+    this.elements.forEach((el: HTMLDivElement) => {
+      COLORS.map((color: string) => {
+        el.classList.remove(color);
+        el.innerHTML = '';
+      });
     });
   }
 
-  // RENDERS COLOR ACCORDING TO A NUMBER
-  public renderColors(binary: string) {
-    this.clear();
-    const numArr: string[] = binary.split('');
-    this.elements.forEach((el: any, elIndex: number) =>
-      numArr
-        .find((_, numIndex: number) => numIndex === elIndex)
-        ?.includes(String(COLORS.indexOf(COLORS[0])))
-        ? el.classList.add(COLORS[0])
-        : el.classList.add(COLORS[1])
+  // RENDERS NUMBER INSIDE A TRAFIC LIGHT
+  private renderNumber(el, num) {
+    return (el.innerHTML = `<p class="num">${num}</p>`);
+  }
+
+  // RENDERS COLOR DEPENDING TO A NUMBER
+  public renderColor(binary: string) {
+    const numArr: number[] = binary.split('').map((num: string) => Number(num));
+    this.elements.forEach((el: HTMLDivElement, elIndex: number) =>
+      numArr.find(
+        (num: number, numIndex: number) =>
+          numIndex === elIndex &&
+          this.renderNumber(el, num) &&
+          el.classList.add(COLORS[num]) // 0 FOR RED AND 1 FOR GREEN - INDEXES IN COLORS ARRAY (config.ts)
+      )
     );
   }
 }

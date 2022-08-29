@@ -32,5 +32,5 @@ export const convertNumber = function () {
   const binaryShort: string = Number(State.decimalNum).toString(2);
   const length: number = BINARY_LENGTH - binaryShort.length;
   State.binaryNum = `${'0'.repeat(length)}${binaryShort}`;
-  window.location.hash = `${State.binaryNum}`;
+  window.location.hash = `${State.binaryNum}=${State.decimalNum}`;
 };

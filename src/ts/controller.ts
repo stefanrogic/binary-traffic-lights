@@ -12,7 +12,7 @@ const controllTraficLight = async function () {
     model.convertNumber();
 
     // (2) CHANGE LIGHTS ACCORDING TO NUMBER
-    traficLightView.renderColors(model.State.binaryNum);
+    traficLightView.renderColor(model.State.binaryNum);
   } catch (err) {
     console.log(err);
   }
