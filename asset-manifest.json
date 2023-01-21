@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/binary-traffic-lights/static/css/main.8554bc52.css",
+    "main.js": "/binary-traffic-lights/static/js/main.cc460f8d.js",
+    "index.html": "/binary-traffic-lights/index.html",
+    "main.8554bc52.css.map": "/binary-traffic-lights/static/css/main.8554bc52.css.map",
+    "main.cc460f8d.js.map": "/binary-traffic-lights/static/js/main.cc460f8d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8554bc52.css",
+    "static/js/main.cc460f8d.js"
+  ]
+}
