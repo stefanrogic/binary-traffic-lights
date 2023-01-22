@@ -14,8 +14,8 @@ export const RandomNumContextProvider = ({ children }) => {
     fetchNewNumber().then((decimal) => {
       //   TURN DECIMAL NUMBER INTO BINARY
       const binary = decimal.toString(2);
-      const binaryAddedZeros = `${"0".repeat(8 - binary.length)}${binary}`;
-      setNum({ decimal: decimal, binary: binaryAddedZeros });
+      const binaryExtended = `${"0".repeat(8 - binary.length)}${binary}`;
+      setNum({ decimal: decimal, binary: binaryExtended });
     });
   };
 
