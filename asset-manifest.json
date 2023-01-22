@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/binary-traffic-lights/static/css/main.8554bc52.css",
+    "main.css": "/binary-traffic-lights/static/css/main.3b01e775.css",
     "main.js": "/binary-traffic-lights/static/js/main.de52060c.js",
     "index.html": "/binary-traffic-lights/index.html",
-    "main.8554bc52.css.map": "/binary-traffic-lights/static/css/main.8554bc52.css.map",
+    "main.3b01e775.css.map": "/binary-traffic-lights/static/css/main.3b01e775.css.map",
     "main.de52060c.js.map": "/binary-traffic-lights/static/js/main.de52060c.js.map"
   },
   "entrypoints": [
-    "static/css/main.8554bc52.css",
+    "static/css/main.3b01e775.css",
     "static/js/main.de52060c.js"
   ]
 }
