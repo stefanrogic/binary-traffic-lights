@@ -1,16 +1,17 @@
-import { useEffect, useContext } from "react";
-import { RandomNumContext } from "../../context/randomNumContext";
+import { useEffect } from "react";
+import { useGetRandomNumber } from "../../hooks/useGetRandomNumber";
 
 import Light from "../../components/light/Light";
 
 import "./binaryTraficLights.scss";
 
 const BinaryTraficLights = () => {
-  const { num, newNumCall } = useContext(RandomNumContext);
+  //  CUSTOM HOOK
+  const { num, isLoading, getRandomNumber } = useGetRandomNumber();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      newNumCall();
+      getRandomNumber();
     }, 1000);
     return () => clearInterval(interval);
   });
@@ -18,11 +19,7 @@ const BinaryTraficLights = () => {
   return (
     <div className="container">
       <h1>{num.decimal}</h1>
-      <div className="lights">
-        {[...num.binary].map((c, i) => (
-          <Light num={c} key={i} />
-        ))}
-      </div>
+      <div className="lights">{[...num.binary].map((c, i) => i <= 7 && <Light data={isLoading ? isLoading : c} key={i} />)}</div>
       <p>
         Made by{" "}
         <a href="https://github.com/Rasgrin" target="_blank" rel="noreferrer">
