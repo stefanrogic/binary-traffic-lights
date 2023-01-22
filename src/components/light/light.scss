@@ -1,14 +1,15 @@
 @import "../../index.scss";
 
 .light {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 40px;
   font-weight: 500;
+  border: 3px black solid;
   border-radius: 50%;
 
   animation: fade-in 1s;
@@ -17,6 +18,8 @@
   @include mobile {
     height: 100px;
     width: 100px;
-    font-size: 30px;
+  }
+
+  @include tablet {
   }
 }

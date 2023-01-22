@@ -8,6 +8,14 @@
   align-items: center;
   animation: fade-in 1s;
 
+  @include mobile {
+    padding: 0 20px;
+  }
+
+  @include tablet {
+    padding: 0 60px;
+  }
+
   h1 {
     margin-top: auto;
     font-size: 80px;
@@ -20,10 +28,6 @@
     gap: 30px;
     justify-content: center;
     align-items: center;
-
-    @include mobile {
-      padding: 20px;
-    }
   }
 
   p {
