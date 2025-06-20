@@ -1,6 +1,9 @@
-# binary-traffic-lights
+Every second, the app makes an API call to fetch a new random decimal number. This number is converted to binary, and each digit is visualized using a traffic light:
 
-Every second API call is made to fetch a new random decimal number. Decimal number is then converted into a binary number. For each digit there will be a trafic light. Red light is turned on 0 and green on 1. While fetching new numbers lights will turn yellow.
+    Red for 0
 
-TRY IT OUT <br>
-https://rasgrin.github.io/binary-traffic-lights/
+    Green for 1
+
+    Yellow while loading (during API fetch)
+
+Each digit in the binary number corresponds to one traffic light, updating in real time.
